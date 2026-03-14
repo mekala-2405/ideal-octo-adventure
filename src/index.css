@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { background-color: #0f0e0d; color: #e8e0d5; height: 100%; -webkit-text-size-adjust: 100%; }
+  body { font-family: 'DM Sans', sans-serif; background-color: #0f0e0d; min-height: 100vh; min-height: 100svh; min-height: 100dvh; overflow-x: hidden; }
+  * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: #2e2a24; }
+  ::-webkit-scrollbar-thumb { background: #4a4540; border-radius: 2px; }
+}
+
+@layer utilities {
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 8px); }
+  .pb-nav { padding-bottom: calc(4rem + env(safe-area-inset-bottom, 8px)); }
+}
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(1rem); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(0.5rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-in { animation: slide-in 0.25s ease forwards; }
+.animate-fade-in  { animation: fade-in  0.3s ease forwards; }
+
+@media (max-width: 480px) {
+  input, textarea, select { font-size: 16px; }
+}
+
+/* Native range input — hide default thumb so our custom thumb shows */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #e8743a;
+  border: 2px solid #0f0e0d;
+  box-shadow: 0 0 0 2px #e8743a40;
+  cursor: grab;
+}
+input[type='range']::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #e8743a;
+  border: 2px solid #0f0e0d;
+  cursor: grab;
+}
+input[type='range']::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+}
+input[type='range']::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: #2e2a24;
+}
+input[type='range']:focus { outline: none; }
+input[type='range']:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px #e8743a30;
+}
